@@ -16,10 +16,7 @@ Post.init(
         isUUID: 4,
       },
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+
     title: {
       type: DataTypes.STRING,
       allowNull: false,

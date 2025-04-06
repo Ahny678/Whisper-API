@@ -13,10 +13,6 @@ module.exports = {
           isUUID: 4,
         },
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       title: {
         type: Sequelize.STRING,
         allowNull: false,
