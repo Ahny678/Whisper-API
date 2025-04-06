@@ -12,7 +12,7 @@ Share.init(
       allowNull: false,
       unique: true,
     },
-    expiresAt: {
+    expiresIn: {
       type: DataTypes.DATE,
       allowNull: false,
     },

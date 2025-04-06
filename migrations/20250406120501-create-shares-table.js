@@ -9,7 +9,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      expiresAt: {
+      expiresIn: {
         type: Sequelize.DATE,
         allowNull: false,
       },
@@ -24,6 +24,16 @@ module.exports = {
       sharedBy: {
         type: Sequelize.UUID,
         allowNull: false,
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn("NOW"),
       },
     });
   },

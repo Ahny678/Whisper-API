@@ -3,17 +3,19 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Comments", {
+    await queryInterface.createTable("Tokens", {
       id: {
         type: Sequelize.UUID,
-        allowNull: false,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true,
       },
-      content: {
+      token: {
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true, // optional, depending on use case
       },
-      postId: {
-        type: Sequelize.UUID,
+      expiresAt: {
+        type: Sequelize.DATE,
         allowNull: false,
       },
       userId: {
@@ -21,19 +23,19 @@ module.exports = {
         allowNull: false,
       },
       createdAt: {
-        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
-        type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.fn("NOW"),
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn("now"),
       },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Comments");
+    await queryInterface.dropTable("Tokens");
   },
 };
