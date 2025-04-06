@@ -10,6 +10,11 @@ var usersRouter = require("./routes/users");
 var app = express();
 //DATABASE CONFIGS---------------------------------------
 var sequelize = require("./config/database");
+const User = require("./models/user");
+const Post = require("./models/post");
+const Share = require("./models/share");
+const Comment = require("./models/comment");
+
 (async () => {
   try {
     await sequelize.authenticate();
