@@ -6,6 +6,7 @@ var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const authRouter = require("./routes/auth");
 
 var app = express();
 //DATABASE CONFIGS---------------------------------------
@@ -14,6 +15,7 @@ const User = require("./models/user");
 const Post = require("./models/post");
 const Share = require("./models/share");
 const Comment = require("./models/comment");
+const Token = require("./models/token");
 
 (async () => {
   try {
@@ -39,6 +41,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

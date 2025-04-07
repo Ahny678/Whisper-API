@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const { sequelize } = require("../config/database");
+const sequelize = require("../config/database");
 const Post = require("./post");
 const User = require("./user");
 
@@ -11,6 +11,7 @@ Share.init(
       type: DataTypes.STRING, //going to use slugs btw
       allowNull: false,
       unique: true,
+      primaryKey: true,
     },
     expiresIn: {
       type: DataTypes.DATE,

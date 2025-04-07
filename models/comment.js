@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
-const { sequelize } = require("../config/database");
+const sequelize = require("../config/database");
 const Post = require("./post");
 const User = require("./user");
 
@@ -10,6 +10,7 @@ Comment.init(
     id: {
       type: DataTypes.UUID,
       allowNull: false,
+      primaryKey: true,
     },
     content: {
       type: DataTypes.STRING,
