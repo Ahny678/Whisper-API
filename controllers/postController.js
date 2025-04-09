@@ -1,6 +1,6 @@
 const Post = require("../models/post");
 const Comment = require("../models/comment");
-const { where } = require("sequelize");
+
 exports.getPost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -43,11 +43,6 @@ exports.createPost = async (req, res) => {
   }
 };
 
-exports.deletePost = (req, res) => {
-  try {
-  } catch (err) {}
-};
-
 exports.updatePost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -71,6 +66,20 @@ exports.updatePost = async (req, res) => {
     }
     post.save();
     res.status(200).json({ message: "Success" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findOne({ where: { id } });
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+    await post.destroy();
+    res.status(204);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

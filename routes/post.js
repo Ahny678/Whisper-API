@@ -25,4 +25,11 @@ router.patch(
   postController.updatePost
 );
 
+router.delete(
+  "/:id",
+  // protectedAuth.isLoggedIn,
+  // protectedAuth.isAuthor,
+  postController.deletePost
+);
+
 module.exports = router;
