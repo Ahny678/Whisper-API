@@ -41,8 +41,7 @@ Post.init(
   {
     // Other model options go here
     sequelize,
-    modelName: "post",
-    tableName: "Posts",
+    modelName: "Post",
   }
 );
 

@@ -1,10 +1,33 @@
 POST http://localhost:3000/auth/login
-
 Content-Type: application/json
 
 {
-    "username": "devAuthor",
-    "password": "secret123"
+    "username":"devAuthor",
+    "password":"secret123"
 }
+
 ###
-GET http://localhost:3000/posts?page=2&limit=1
+PATCH http://localhost:3000/posts/8919e0e9-77dc-49b6-bbd4-20e8933047e0
+{
+    "title":"After Midnight",
+  
+}
+ 
+###
+
+GET http://localhost:3000/posts/4fdfa976-63d8-454d-98e6-a2cf0b9ea2dd/comments
+
+
+###
+GET http://localhost:3000/posts?page=1&limit=2
+
+###
+POST http://localhost:3000/posts/create
+Content-Type: application/json
+
+{
+    "title":"Midnight thoughts",
+      "content":"Reverend insanity >>>return of the blossoming blade",
+      "isPublished":false,
+      "category":"murim"
+}

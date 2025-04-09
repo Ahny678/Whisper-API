@@ -5,14 +5,24 @@ const postController = require("../controllers/postController");
 
 const Post = require("../models/post");
 
-router.get("/:id");
-router.get("/:id/comments");
+router.get("/:id", postController.getPost);
+router.get("/:id/comments", postController.getComments);
 router.get(
   "/",
-
+  protectedAuth.isLoggedIn,
   protectedAuth.getPaginatedPosts(Post)
 );
-router.post("/new", protectedAuth.isLoggedIn, protectedAuth.isAuthor);
-router.patch("/:id", protectedAuth.isLoggedIn, protectedAuth.isAuthor);
+router.post(
+  "/create",
+  protectedAuth.isLoggedIn,
+  protectedAuth.isAuthor,
+  postController.createPost
+);
+router.patch(
+  "/:id",
+  protectedAuth.isLoggedIn,
+  protectedAuth.isAuthor,
+  postController.updatePost
+);
 
 module.exports = router;
