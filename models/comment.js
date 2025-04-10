@@ -11,6 +11,7 @@ Comment.init(
       type: DataTypes.UUID,
       allowNull: false,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
     },
     content: {
       type: DataTypes.STRING,

@@ -31,12 +31,10 @@ exports.isAuthor = (req, res, next) => {
   next();
 };
 
-exports.isResourceOwner = (model, resourceIdParam) => {
+exports.isResourceOwner = (model) => {
   return async (req, res, next) => {
     try {
-      const resourceId = req.params[resourceIdParam];
-      const resource = await model.findByPk(resourceId);
-
+      const resource = await model.findByPk(req.params.id);
       if (!resource) {
         return res.status(404).json({ message: `${resource} not found` });
       }

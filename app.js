@@ -5,14 +5,13 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
-const postRouter = require("./routes/post");
+const postRouter = require("./routes/posts");
+const commentRouter = require("./routes/comments");
 
 var app = express();
 //DATABASE CONFIGS---------------------------------------
 var sequelize = require("./config/database");
-const User = require("./models/user");
 const Post = require("./models/post");
 const Share = require("./models/share");
 const Comment = require("./models/comment");
@@ -41,9 +40,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/posts", postRouter);
+app.use("/comments", commentRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

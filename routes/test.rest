@@ -8,8 +8,12 @@ Content-Type: application/json
 
 ###
 PATCH http://localhost:3000/posts/8919e0e9-77dc-49b6-bbd4-20e8933047e0
+Content-Type: application/json
+
 {
-    "title":"After Midnight",
+    "title":" Midnight SUmmertime",
+    "isPublished":true
+    
   
 }
  
@@ -30,4 +34,15 @@ Content-Type: application/json
       "content":"Reverend insanity >>>return of the blossoming blade",
       "isPublished":false,
       "category":"murim"
+}
+
+###
+DELETE http://localhost:3000/posts/8919e0e9-77dc-49b6-bbd4-20e8933047e0
+
+###
+POST http://localhost:3000/posts/37f1d64a-2334-48f8-a0e9-a6045fd29a79
+Content-Type: application/json
+
+{
+    "content":"need them all in an mv"
 }
