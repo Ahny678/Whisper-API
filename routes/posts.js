@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const protectedAuth = require("../middleware/protectedAuth");
 const postController = require("../controllers/postController");
+const paginator = require("../middleware/paginator");
 
 const Post = require("../models/post");
 
@@ -9,8 +10,8 @@ router.get("/:id", postController.getPost);
 router.get("/:id/comments", postController.getComments);
 router.get(
   "/",
-  protectedAuth.isLoggedIn,
-  protectedAuth.getPaginatedPosts(Post)
+  //protectedAuth.isLoggedIn,
+  paginator.getPaginatedPosts(true)
 );
 router.post(
   "/create",
