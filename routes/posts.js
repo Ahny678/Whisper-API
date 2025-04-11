@@ -6,13 +6,9 @@ const paginator = require("../middleware/paginator");
 
 const Post = require("../models/post");
 
-router.get("/:id", postController.getPost);
+router.get("/:id", protectedAuth.isLoggedIn, postController.getPost);
 router.get("/:id/comments", postController.getComments);
-router.get(
-  "/",
-  //protectedAuth.isLoggedIn,
-  paginator.getPaginatedPosts(true)
-);
+router.get("/", protectedAuth.isLoggedIn, paginator.getPaginatedPosts(true));
 router.post(
   "/create",
   protectedAuth.isLoggedIn,

@@ -8,31 +8,34 @@ const router = express.Router();
 const protectedAuth = require("../middleware/protectedAuth");
 const draftController = require("../controllers/draftController");
 const paginator = require("../middleware/paginator");
+const Post = require("../models/post");
 
-router.get("/:id", draftController.getDraft);
 router.get(
-  "/",
-  //protectedAuth.isLoggedIn,
-  paginator.getPaginatedPosts(false)
+  "/:id",
+  protectedAuth.isLoggedIn,
+  protectedAuth.isResourceOwner(Post),
+  draftController.getDraft
 );
-// router.post(
-//   "/publish",
-//   protectedAuth.isLoggedIn,
-//   protectedAuth.isAuthor,
-//   draftController.publishPost
-// );
-// router.patch(
-//   "/:id",
-//   protectedAuth.isLoggedIn,
-//   protectedAuth.isAuthor,
-//   draftController.updateDraft
-// );
+router.get("/", protectedAuth.isLoggedIn, paginator.getPaginatedPosts(false));
 
-// router.delete(
-//   "/:id",
-//   protectedAuth.isLoggedIn,
-//   protectedAuth.isAuthor,
-//   draftController.deleteDraft
-// );
+router.post(
+  "/:id",
+  protectedAuth.isLoggedIn,
+  protectedAuth.isResourceOwner,
+  draftController.publishDraft
+);
+router.patch(
+  "/:id",
+  protectedAuth.isLoggedIn,
+  protectedAuth.isAuthor,
+  draftController.updateDraft
+);
+
+router.delete(
+  "/:id",
+  //   protectedAuth.isLoggedIn,
+  //   protectedAuth.isAuthor,
+  draftController.deleteDraft
+);
 
 module.exports = router;

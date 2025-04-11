@@ -1,48 +1,14 @@
-POST http://localhost:3000/auth/login
-Content-Type: application/json
-
-{
-    "username":"devAuthor",
-    "password":"secret123"
-}
-
-###
-PATCH http://localhost:3000/posts/8919e0e9-77dc-49b6-bbd4-20e8933047e0
-Content-Type: application/json
-
-{
-    "title":" Midnight SUmmertime",
-    "isPublished":true
-    
-  
-}
+ 
+GET http://localhost:3000/drafts?page=1&?limit=1
  
 ###
+POST  http://localhost:3000/drafts/9497d186-1e30-40cd-a842-56bfb740cb2e
 
-GET http://localhost:3000/posts/4fdfa976-63d8-454d-98e6-a2cf0b9ea2dd/comments
-
-
+ 
 ###
-GET http://localhost:3000/posts?page=1&limit=2
-
-###
-POST http://localhost:3000/posts/create
+PATCH  http://localhost:3000/drafts/9497d186-1e30-40cd-a842-56bfb740cb2e
 Content-Type: application/json
 
 {
-    "title":"Midnight thoughts",
-      "content":"Reverend insanity >>>return of the blossoming blade",
-      "isPublished":false,
-      "category":"murim"
-}
-
-###
-DELETE http://localhost:3000/posts/8919e0e9-77dc-49b6-bbd4-20e8933047e0
-
-###
-POST http://localhost:3000/posts/37f1d64a-2334-48f8-a0e9-a6045fd29a79
-Content-Type: application/json
-
-{
-    "content":"need them all in an mv"
+    "content":"angel wings, good luck babe,"
 }
