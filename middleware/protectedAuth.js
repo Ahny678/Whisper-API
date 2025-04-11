@@ -33,10 +33,13 @@ exports.isAuthor = (req, res, next) => {
 
 exports.isResourceOwner = (model) => {
   return async (req, res, next) => {
+    if (!req.user) {
+      return res.status(401).json({ message: "User not authenticated" });
+    }
     try {
       const resource = await model.findByPk(req.params.id);
       if (!resource) {
-        return res.status(404).json({ message: `${resource} not found` });
+        return res.status(404).json({ message: `resource not found` });
       }
 
       if (resource.userId !== req.user.id) {

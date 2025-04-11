@@ -7,7 +7,7 @@ const Comment = require("../models/comment");
 
 router.post(
   "/:postId",
-  //   protectedAuth.isLoggedIn,
+  protectedAuth.isLoggedIn,
   commentController.postAComment
 );
 router.delete(
@@ -18,7 +18,8 @@ router.delete(
 router.patch(
   "/:id",
   protectedAuth.isLoggedIn,
-  protectedAuth.isResourceOwner(Comment)
+  protectedAuth.isResourceOwner(Comment),
+  commentController.updateAComment
 );
 
 module.exports = router;
