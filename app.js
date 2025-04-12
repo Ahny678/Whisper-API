@@ -10,6 +10,7 @@ const postRouter = require("./routes/posts");
 const commentRouter = require("./routes/comments");
 const draftRouter = require("./routes/draft");
 const exploreRouter = require("./routes/explore");
+require("./cron/trendingJob");
 
 var app = express();
 //DATABASE CONFIGS---------------------------------------
