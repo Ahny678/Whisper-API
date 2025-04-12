@@ -18,7 +18,7 @@ const Post = require("./models/post");
 const Share = require("./models/share");
 const Comment = require("./models/comment");
 const Token = require("./models/token");
-
+const Trending = require("./models/trending");
 (async () => {
   try {
     await sequelize.authenticate();
@@ -51,11 +51,6 @@ app.use("/explore", exploreRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
-// //debugging/....
-// app.use(function (req, res, next) {
-//   console.log("404 - Route not found:", req.method, req.originalUrl);
-//   next(createError(404));
-// });
 
 // error handler
 app.use(function (err, req, res, next) {
