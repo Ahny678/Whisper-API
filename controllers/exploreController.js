@@ -1,6 +1,6 @@
 const { QueryTypes } = require("sequelize");
 const sequelize = require("../config/database");
-
+const TrendingPost = require("../models/trending");
 exports.search = async (req, res) => {
   const { q, category, sort } = req.query;
   const page = parseInt(req.query.page) || 1;
@@ -93,7 +93,14 @@ exports.search = async (req, res) => {
   }
 };
 
-exports.trending = () => {
+exports.trending = async (req, res) => {
   try {
-  } catch (err) {}
+    const trending = await TrendingPost.findAll({
+      attributes: ["postId", "postTitle"],
+      order: [["createdAt", "DESC"]], // most recent trending list
+    });
+    res.status(200).json(trending);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
