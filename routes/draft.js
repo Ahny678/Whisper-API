@@ -1,8 +1,3 @@
-//get all drafts
-//get a draft
-//publish a draft
-//delete a draft
-
 const express = require("express");
 const router = express.Router();
 const protectedAuth = require("../middleware/protectedAuth");
@@ -33,8 +28,8 @@ router.patch(
 
 router.delete(
   "/:id",
-  //   protectedAuth.isLoggedIn,
-  //   protectedAuth.isAuthor,
+  protectedAuth.isLoggedIn,
+  protectedAuth.isAuthor,
   draftController.deleteDraft
 );
 

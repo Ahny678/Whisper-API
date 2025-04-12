@@ -25,7 +25,7 @@ router.patch(
 router.delete(
   "/:id",
   protectedAuth.isLoggedIn,
-  protectedAuth.isAuthor,
+  protectedAuth.isResourceOwner(Post),
   postController.deletePost
 );
 

@@ -37,6 +37,14 @@ Post.init(
       type: DataTypes.DATE,
       allowNull: true, // Starts as null until published
     },
+    views: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    likes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   },
   {
     // Other model options go here
