@@ -9,6 +9,7 @@ const authRouter = require("./routes/auth");
 const postRouter = require("./routes/posts");
 const commentRouter = require("./routes/comments");
 const draftRouter = require("./routes/draft");
+const exploreRouter = require("./routes/explore");
 
 var app = express();
 //DATABASE CONFIGS---------------------------------------
@@ -45,6 +46,7 @@ app.use("/auth", authRouter);
 app.use("/posts", postRouter);
 app.use("/comments", commentRouter);
 app.use("/drafts", draftRouter);
+app.use("/explore", exploreRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
