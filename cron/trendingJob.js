@@ -39,5 +39,5 @@ const updateTrendingPosts = async () => {
   }
 };
 
-// Run every 10 seconds
-cron.schedule("*/10 * * * * *", updateTrendingPosts);
+// Run every 10 min
+cron.schedule("*/10 * * * *", updateTrendingPosts);

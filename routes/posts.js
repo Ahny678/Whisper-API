@@ -7,7 +7,11 @@ const paginator = require("../middleware/paginator");
 const Post = require("../models/post");
 
 router.get("/:id", protectedAuth.isLoggedIn, postController.getPost);
-router.get("/:id/comments", postController.getComments);
+router.get(
+  "/:id/comments",
+  protectedAuth.isLoggedIn,
+  postController.getComments
+);
 router.get("/", protectedAuth.isLoggedIn, paginator.getPaginatedPosts(true));
 router.post(
   "/create",
@@ -31,8 +35,13 @@ router.delete(
 //on client side, when paginator is called, track all postids that are actually vicible on screen and send it to this endpoint
 router.post(
   "/incrementViews",
-  protectedAuth.isLoggedIn,
+  // protectedAuth.isLoggedIn,
   postController.incrementPostsViews
 );
 
+router.post(
+  ":postId/like/:userId",
+  protectedAuth.isLoggedIn,
+  postController.likePost
+);
 module.exports = router;
