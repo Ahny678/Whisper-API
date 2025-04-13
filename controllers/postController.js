@@ -8,6 +8,7 @@ exports.getPost = async (req, res) => {
     if (!post) {
       return res.status(404).json({ message: "Post not found" });
     }
+    await post.increment("views");
     res.status(200).json(post);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -84,3 +85,17 @@ exports.deletePost = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.incrementPostsViews = async (req, res) => {
+  const { postIds } = req.body;
+  try {
+    await Promise.all(
+      postIds.map((id) => Post.increment("views", { where: { id } }))
+    );
+    res.status(200).json({ message: "Views updated" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.likePost = async (req, res) => {};

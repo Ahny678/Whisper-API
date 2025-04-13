@@ -28,5 +28,11 @@ router.delete(
   protectedAuth.isResourceOwner(Post),
   postController.deletePost
 );
+//on client side, when paginator is called, track all postids that are actually vicible on screen and send it to this endpoint
+router.post(
+  "/incrementViews",
+  protectedAuth.isLoggedIn,
+  postController.incrementPostsViews
+);
 
 module.exports = router;
