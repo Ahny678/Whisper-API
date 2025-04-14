@@ -1,6 +1,6 @@
 const Post = require("../models/post");
 const Comment = require("../models/comment");
-
+const Like = require("../models/like");
 exports.getPost = async (req, res) => {
   try {
     const { id } = req.params;
@@ -98,4 +98,25 @@ exports.incrementPostsViews = async (req, res) => {
   }
 };
 
-exports.likePost = async (req, res) => {};
+exports.toggleLike = async (req, res) => {
+  const { postId, userId } = req.params;
+
+  try {
+    const post = await Post.findOne({ where: { id: postId } });
+    const like = await Like.findOne({ where: { userId, postId } });
+    if (!like) {
+      await Like.create({
+        userId,
+        postId,
+      });
+      await post.increment("likes");
+      res.status(200).json({ message: "Liked" });
+    } else {
+      await Like.destroy({ where: { userId, postId } });
+      await post.decrement("likes");
+      res.status(200).json({ message: "Unliked" });
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

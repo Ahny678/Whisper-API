@@ -1,14 +1,29 @@
  
-GET http://localhost:3000/drafts?page=1&?limit=1
+GET http://localhost:3000/posts?page=1&limit=2
+
+###
+POST http://localhost:3000/posts/incrementViews/
+Content-Type: application/json
+
+{
+    "postIds":["22397ac7-da62-4422-9ee5-434879301ef2","0e73cceb-38a5-4f0e-b1f9-061e7e5a4680" ]
+}
  
 ###
 POST  http://localhost:3000/drafts/9497d186-1e30-40cd-a842-56bfb740cb2e
 
+###
+GET  http://localhost:3000/drafts/ 
+
  
 ###
-PATCH  http://localhost:3000/drafts/9497d186-1e30-40cd-a842-56bfb740cb2e
-Content-Type: application/json
+GET  http://localhost:3000/explore/search?q=cultivation&category=Books&sort=likes
 
-{
-    "content":"angel wings, good luck babe,"
-}
+###
+GET  http://localhost:3000/posts/075cff6a-7723-4d4e-a5c9-a1add0e0c9c5
+
+
+###
+POST  http://localhost:3000/posts/6b4c4c2a-94fe-4dd7-8447-f06f42a24fee/like/6650f95c-8791-4381-85bf-cc7dde841b00
+
+

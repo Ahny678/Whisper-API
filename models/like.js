@@ -46,4 +46,4 @@ User.hasMany(Like, {
   foreignKey: "userId",
 });
 
-module.exports = Comment;
+module.exports = Like;

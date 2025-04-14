@@ -20,6 +20,7 @@ const Share = require("./models/share");
 const Comment = require("./models/comment");
 const Token = require("./models/token");
 const Trending = require("./models/trending");
+const Like = require("./models/like");
 (async () => {
   try {
     await sequelize.authenticate();

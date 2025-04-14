@@ -40,8 +40,8 @@ router.post(
 );
 
 router.post(
-  ":postId/like/:userId",
-  protectedAuth.isLoggedIn,
-  postController.likePost
+  "/:postId/like/:userId",
+  // protectedAuth.isLoggedIn,
+  postController.toggleLike
 );
 module.exports = router;
