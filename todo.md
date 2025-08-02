@@ -1,8 +1,3 @@
-# ENDPOINTS
-
-- toggle like
-- shares
-
 # SETTING UP SECURITY
 
 - Set up CORS with allowed origins
